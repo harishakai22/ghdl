@@ -16,7 +16,7 @@
 
 with Ada.Command_Line; use Ada.Command_Line;
 with GNAT.Directory_Operations;
-with GNAT.Traceback.Symbolic;
+--  with GNAT.Traceback.Symbolic;
 with Simple_IO; use Simple_IO;
 with Version;
 
@@ -88,7 +88,7 @@ package body Bug is
          Put_Line_Err ("Exception information:");
          Put_Err (Exception_Information (Except));
       end if;
-      Put_Line_Err (GNAT.Traceback.Symbolic.Symbolic_Traceback (Except));
+--      Put_Line_Err (GNAT.Traceback.Symbolic.Symbolic_Traceback (Except));
       Put_Line_Err
         ("******************************************************************");
    end Disp_Bug_Box;
