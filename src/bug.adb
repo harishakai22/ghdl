@@ -16,6 +16,7 @@
 
 with Ada.Command_Line; use Ada.Command_Line;
 with GNAT.Directory_Operations;
+with GNAT.Traceback.Symbolic;
 with Simple_IO; use Simple_IO;
 with Version;
 
@@ -73,13 +74,6 @@ package body Bug is
       Put_Line_Err ("Compiled with " & Get_Gnat_Version);
       Put_Line_Err ("Target: " & Standard'Target_Name);
       Put_Line_Err (GNAT.Directory_Operations.Get_Current_Dir);
-      --Put_Line
-      --  ("Program name: " & Command_Name);
-      --Put_Line
-      --  ("Program arguments:");
-      --for I in 1 .. Argument_Count loop
-      --   Put_Line ("  " & Argument (I));
-      --end loop;
       Put_Line_Err ("Command line:");
       Put_Err (Command_Name);
       for I in 1 .. Argument_Count loop
@@ -94,6 +88,7 @@ package body Bug is
          Put_Line_Err ("Exception information:");
          Put_Err (Exception_Information (Except));
       end if;
+      Put_Line_Err (GNAT.Traceback.Symbolic.Symbolic_Traceback (Except));
       Put_Line_Err
         ("******************************************************************");
    end Disp_Bug_Box;
